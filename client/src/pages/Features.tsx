@@ -10,17 +10,17 @@ interface FeatureProps {
 const FeatureCard = ({ icon, title, description, delay }: FeatureProps) => {
   return (
     <motion.div 
-      className="royal-gradient p-6 rounded-xl shadow-premium reflect-top"
+      className="bg-gradient-to-br from-[#2E073F] to-[#4A0C65] p-6 rounded-xl shadow-lg"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: delay }}
       viewport={{ once: true }}
     >
-      <div className="w-12 h-12 rounded-full bg-gold flex items-center justify-center mb-6 text-dark">
+      <div className="w-12 h-12 rounded-full bg-[#AD49E1] flex items-center justify-center mb-6 text-[#EBD3F8]">
         <i className={`${icon} text-xl`}></i>
       </div>
-      <h3 className="font-playfair text-xl font-semibold mb-3">{title}</h3>
-      <p className="text-gray-300">{description}</p>
+      <h3 className="font-playfair text-xl font-semibold mb-3 text-[#EBD3F8]">{title}</h3>
+      <p className="text-[#EBD3F8] opacity-80">{description}</p>
     </motion.div>
   );
 };

@@ -16,14 +16,14 @@ const Header = () => {
   ];
 
   return (
-    <header className="glass-effect fixed w-full z-50 bg-opacity-70 backdrop-blur-md bg-navy-dark border-b border-gold border-opacity-10">
+    <header className="glass-effect fixed w-full z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center cursor-pointer">
-              <span className="font-playfair text-gold text-2xl font-bold">Physics</span>
-              <span className="font-playfair text-white text-2xl font-light">Calculator</span>
+              <span className="font-playfair text-[#AD49E1] text-2xl font-bold">Physics</span>
+              <span className="font-playfair text-[#EBD3F8] text-2xl font-light">Calculator</span>
             </div>
           </Link>
           
@@ -31,7 +31,7 @@ const Header = () => {
           <nav className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <Link key={link.path} href={link.path}>
-                <div className={`nav-link-hover text-gray-300 hover:text-gold-light cursor-pointer ${location === link.path ? 'text-gold' : ''}`}>
+                <div className={`nav-link-hover text-[#EBD3F8] hover:text-[#AD49E1] cursor-pointer ${location === link.path ? 'text-[#AD49E1]' : ''}`}>
                   {link.title}
                 </div>
               </Link>
@@ -43,7 +43,7 @@ const Header = () => {
           
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-gold"
+            className="md:hidden text-[#AD49E1]"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -53,12 +53,12 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-800">
+          <div className="md:hidden py-4 border-t border-[#AD49E1] border-opacity-30">
             <nav className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <Link key={link.path} href={link.path}>
                   <div 
-                    className={`text-gray-300 hover:text-gold-light px-2 py-1 cursor-pointer ${location === link.path ? 'text-gold' : ''}`}
+                    className={`text-[#EBD3F8] hover:text-[#AD49E1] px-2 py-1 cursor-pointer ${location === link.path ? 'text-[#AD49E1]' : ''}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.title}
