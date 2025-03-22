@@ -22,8 +22,8 @@ const Header = () => {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center cursor-pointer">
-              <span className="font-playfair text-[#AD49E1] text-2xl font-bold">Physics</span>
-              <span className="font-playfair text-[#EBD3F8] text-2xl font-light">Calculator</span>
+              <span className="font-playfair text-[#697565] text-2xl font-bold">Physics</span>
+              <span className="font-playfair text-[#ECDFCC] text-2xl font-light">Calculator</span>
             </div>
           </Link>
           
@@ -31,7 +31,7 @@ const Header = () => {
           <nav className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <Link key={link.path} href={link.path}>
-                <div className={`nav-link-hover text-[#EBD3F8] hover:text-[#AD49E1] cursor-pointer ${location === link.path ? 'text-[#AD49E1]' : ''}`}>
+                <div className={`nav-link-hover text-[#ECDFCC] hover:text-[#697565] cursor-pointer ${location === link.path ? 'text-[#697565]' : ''}`}>
                   {link.title}
                 </div>
               </Link>
@@ -43,7 +43,7 @@ const Header = () => {
           
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-[#AD49E1]"
+            className="md:hidden text-[#697565]"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -53,12 +53,12 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-[#AD49E1] border-opacity-30">
+          <div className="md:hidden py-4 border-t border-[#697565] border-opacity-30">
             <nav className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <Link key={link.path} href={link.path}>
                   <div 
-                    className={`text-[#EBD3F8] hover:text-[#AD49E1] px-2 py-1 cursor-pointer ${location === link.path ? 'text-[#AD49E1]' : ''}`}
+                    className={`text-[#ECDFCC] hover:text-[#697565] px-2 py-1 cursor-pointer ${location === link.path ? 'text-[#697565]' : ''}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.title}

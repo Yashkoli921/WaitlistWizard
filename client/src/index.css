@@ -4,10 +4,10 @@
 
 @layer base {
   :root {
-    --deep-purple: #2E073F;
-    --medium-purple: #7A1CAC;
-    --bright-purple: #AD49E1;
-    --light-purple: #EBD3F8;
+    --dark-gray: #1E201E;
+    --dark-olive: #3C3D37;
+    --sage-green: #697565;
+    --cream: #ECDFCC;
   }
 
   * {
@@ -16,18 +16,18 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    background-color: var(--deep-purple);
+    background-color: var(--dark-gray);
   }
 }
 
 @layer components {
-  .btn-purple {
-    @apply bg-[#7A1CAC] hover:bg-[#AD49E1] text-white transition-colors;
+  .btn-sage {
+    @apply bg-[#697565] hover:bg-[#3C3D37] text-[#ECDFCC] transition-colors;
   }
   
   .glass-effect {
-    @apply bg-opacity-70 backdrop-blur-md;
-    background-color: rgba(46, 7, 63, 0.8);
-    border-bottom: 1px solid rgba(173, 73, 225, 0.3);
+    @apply bg-opacity-80 backdrop-blur-md;
+    background-color: rgba(30, 32, 30, 0.9);
+    border-bottom: 1px solid rgba(105, 117, 101, 0.4);
   }
 }

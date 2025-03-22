@@ -34,7 +34,7 @@ const ThreeDModel = ({
     const height = canvas.height;
 
     // Clear canvas
-    ctx.fillStyle = '#2E073F';
+    ctx.fillStyle = '#1E201E';
     ctx.fillRect(0, 0, width, height);
 
     try {
@@ -86,12 +86,19 @@ const ThreeDModel = ({
         // Normalize z to [0,1] for color mapping
         const t = (point.z + 10) / 20;
         
-        // Purple gradient
-        const r = Math.floor((0.17 + 0.5 * t) * 255);
-        const g = Math.floor((0.03 + 0.25 * t) * 255);
-        const b = Math.floor((0.25 + 0.6 * t) * 255);
+        // Earth-tone gradient (sage to cream)
+        const r = Math.floor((30 + (236 - 30) * t) / 255);
+        const g = Math.floor((32 + (223 - 32) * t) / 255);
+        const b = Math.floor((30 + (204 - 30) * t) / 255);
         
-        ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+        // Blend between dark olive and sage
+        const color = {
+          r: Math.floor(60 + (105 - 60) * t), 
+          g: Math.floor(61 + (117 - 61) * t),
+          b: Math.floor(55 + (101 - 55) * t)
+        };
+        
+        ctx.fillStyle = `rgb(${color.r}, ${color.g}, ${color.b})`;
         
         // Size based on depth for perspective effect
         const size = Math.max(2, 6 - point.depth / 5);
@@ -102,7 +109,7 @@ const ThreeDModel = ({
       }
 
       // Draw coordinate axes
-      ctx.strokeStyle = '#AD49E1';
+      ctx.strokeStyle = '#ECDFCC';
       ctx.lineWidth = 2;
       
       // X axis
@@ -176,9 +183,9 @@ const ThreeDModel = ({
   return (
     <div className="relative h-full w-full">
       {error ? (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#2E073F]">
-          <div className="text-[#EBD3F8] text-lg mb-2">{error}</div>
-          <div className="text-[#AD49E1] text-sm">
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#1E201E]">
+          <div className="text-[#ECDFCC] text-lg mb-2">{error}</div>
+          <div className="text-[#697565] text-sm">
             Try a different formula
           </div>
         </div>
@@ -189,7 +196,7 @@ const ThreeDModel = ({
             className="w-full h-full cursor-move"
             onClick={() => setAngle(angle + Math.PI/8)} // Allow clicking to rotate
           />
-          <div className="absolute bottom-2 left-2 text-[#EBD3F8] text-xs bg-[#2E073F] bg-opacity-70 p-1 rounded">
+          <div className="absolute bottom-2 left-2 text-[#ECDFCC] text-xs bg-[#1E201E] bg-opacity-70 p-1 rounded">
             Click to rotate
           </div>
         </>
