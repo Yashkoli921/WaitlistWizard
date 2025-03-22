@@ -66,7 +66,7 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-16 md:py-24 bg-gradient-to-b from-dark to-navy-dark">
+    <section id="features" className="py-16 md:py-24 bg-gradient-to-b from-[#2E073F] to-[#4A0C65]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-16"
@@ -75,9 +75,9 @@ const Features = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4">Premium <span className="text-gold">Features</span></h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Designed with professionals in mind, our calculator suite offers unparalleled functionality with a royal aesthetic.
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-[#EBD3F8]">Premium <span className="text-[#AD49E1]">Features</span></h2>
+          <p className="text-[#EBD3F8] opacity-80 max-w-2xl mx-auto">
+            Designed with professionals in mind, our calculator suite offers unparalleled functionality with a premium aesthetic.
           </p>
         </motion.div>
         

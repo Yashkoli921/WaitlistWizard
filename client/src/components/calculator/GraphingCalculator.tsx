@@ -51,26 +51,26 @@ const GraphingCalculator = () => {
   };
 
   return (
-    <div className="royal-gradient rounded-2xl shadow-calculator overflow-hidden reflect-top">
-      <div className="bg-navy-dark py-3 px-4 flex justify-between items-center">
-        <div className="text-gold font-playfair">3D Graph Viewer</div>
+    <div className="bg-gradient-to-br from-[#2E073F] to-[#4A0C65] rounded-2xl shadow-lg overflow-hidden">
+      <div className="bg-[#2E073F] py-3 px-4 flex justify-between items-center border-b border-[#7A1CAC] border-opacity-50">
+        <div className="text-[#AD49E1] font-playfair">3D Graph Viewer</div>
         <div className="flex space-x-2">
           <button 
-            className="text-gray-400 hover:text-gold"
+            className="text-[#EBD3F8] opacity-70 hover:text-[#AD49E1] hover:opacity-100"
             onClick={() => setShowFullscreen(!showFullscreen)}
             aria-label="Toggle fullscreen"
           >
             <i className={`fas ${showFullscreen ? 'fa-compress-alt' : 'fa-expand-arrows-alt'}`}></i>
           </button>
           <button 
-            className="text-gray-400 hover:text-gold"
+            className="text-[#EBD3F8] opacity-70 hover:text-[#AD49E1] hover:opacity-100"
             onClick={handleExport}
             aria-label="Download"
           >
             <i className="fas fa-download"></i>
           </button>
           <button 
-            className="text-gray-400 hover:text-gold"
+            className="text-[#EBD3F8] opacity-70 hover:text-[#AD49E1] hover:opacity-100"
             aria-label="Settings"
           >
             <i className="fas fa-cog"></i>
@@ -79,7 +79,7 @@ const GraphingCalculator = () => {
       </div>
       
       {/* 3D Graph Space */}
-      <div className={`relative ${showFullscreen ? 'h-[80vh]' : 'h-80'} w-full bg-navy-dark`}>
+      <div className={`relative ${showFullscreen ? 'h-[80vh]' : 'h-80'} w-full bg-[#2E073F]`}>
         <ThreeDModel 
           formula={data?.formula} 
           xMin={data?.xMin} 
@@ -90,32 +90,32 @@ const GraphingCalculator = () => {
         />
         
         {/* Controls Overlay */}
-        <div className="absolute bottom-4 right-4 bg-navy-dark bg-opacity-70 rounded-lg p-2 flex space-x-2">
-          <button className="w-8 h-8 flex items-center justify-center rounded hover:bg-navy text-gold">
+        <div className="absolute bottom-4 right-4 bg-[#2E073F] bg-opacity-70 rounded-lg p-2 flex space-x-2">
+          <button className="w-8 h-8 flex items-center justify-center rounded hover:bg-[#4A0C65] text-[#AD49E1]">
             <i className="fas fa-plus"></i>
           </button>
-          <button className="w-8 h-8 flex items-center justify-center rounded hover:bg-navy text-gold">
+          <button className="w-8 h-8 flex items-center justify-center rounded hover:bg-[#4A0C65] text-[#AD49E1]">
             <i className="fas fa-minus"></i>
           </button>
-          <button className="w-8 h-8 flex items-center justify-center rounded hover:bg-navy text-gold">
+          <button className="w-8 h-8 flex items-center justify-center rounded hover:bg-[#4A0C65] text-[#AD49E1]">
             <i className="fas fa-sync"></i>
           </button>
         </div>
       </div>
       
       {/* Formula Input */}
-      <div className="p-4 bg-navy-light">
+      <div className="p-4 bg-[#3D0A54]">
         <div className="flex items-center">
-          <div className="text-gold mr-3">f(x,y) =</div>
+          <div className="text-[#AD49E1] mr-3">f(x,y) =</div>
           <Input 
             type="text" 
             value={formula} 
             onChange={(e) => setFormula(e.target.value)}
-            className="flex-grow bg-navy-dark border border-gray-700 rounded px-3 py-2 text-gray-200 font-mono"
+            className="flex-grow bg-[#2E073F] border border-[#7A1CAC] rounded px-3 py-2 text-[#EBD3F8] font-mono"
           />
           <Button 
             onClick={handlePlotClick}
-            className="ml-3 btn-gold text-dark font-semibold"
+            className="ml-3 bg-[#7A1CAC] hover:bg-[#AD49E1] text-white font-semibold"
           >
             Plot
           </Button>

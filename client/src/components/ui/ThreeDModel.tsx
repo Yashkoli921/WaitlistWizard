@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { evaluate } from 'mathjs';
 import * as THREE from 'three';
 
@@ -21,9 +21,23 @@ const ThreeDModel = ({
   yMax = 5,
   resolution = 50
 }: ThreeDModelProps) => {
+  const [hasError, setHasError] = useState(false);
+  const [isWebGLSupported, setIsWebGLSupported] = useState(true);
+  
+  // Check if WebGL is supported
+  useEffect(() => {
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      setIsWebGLSupported(!!gl);
+    } catch (e) {
+      console.error("WebGL detection error:", e);
+      setIsWebGLSupported(false);
+    }
+  }, []);
   
   const meshData = useMemo(() => {
-    if (!formula) return null;
+    if (!formula || !isWebGLSupported) return null;
     
     try {
       // Create grid of vertices
@@ -73,11 +87,11 @@ const ThreeDModel = ({
           const vertexIndex = i * (resolution + 1) + j;
           const z = vertices[vertexIndex * 3 + 1]; // y-value (height)
           
-          // Map z value to color (gold for high values, navy blue for low)
+          // Map z value to color (purple gradient for our theme)
           const t = (z + 10) / 20; // Normalize z to [0,1]
-          const r = 0.1 + 0.7 * t; // Dark blue to gold
-          const g = 0.1 + 0.5 * t;
-          const b = 0.5 - 0.3 * t;
+          const r = 0.17 + 0.5 * t; // Purple gradient (#2E073F to #AD49E1)
+          const g = 0.03 + 0.25 * t;
+          const b = 0.25 + 0.6 * t;
           
           colors.push(r, g, b);
         }
@@ -86,25 +100,53 @@ const ThreeDModel = ({
       return { vertices, indices, colors };
     } catch (error) {
       console.error("Error generating 3D mesh data:", error);
+      setHasError(true);
       return null;
     }
-  }, [formula, xMin, xMax, yMin, yMax, resolution]);
+  }, [formula, xMin, xMax, yMin, yMax, resolution, isWebGLSupported]);
 
-  if (!meshData) {
-    return <div className="flex items-center justify-center h-full">Error generating 3D model</div>;
+  // If WebGL is not supported or there's an error, show fallback UI
+  if (!isWebGLSupported || hasError || !meshData) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full bg-[#2E073F]">
+        <div className="text-[#EBD3F8] text-lg mb-2">
+          {!isWebGLSupported ? "3D graphics not supported in your browser" : "Unable to render 3D graph"}
+        </div>
+        <div className="text-[#AD49E1] text-sm">
+          Try a different formula or check browser compatibility
+        </div>
+      </div>
+    );
   }
 
-  return (
-    <Canvas camera={{ position: [5, 5, 5], fov: 60 }}>
-      <color attach="background" args={['#0A1A2F']} />
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[10, 10, 5]} intensity={1} color="#D4AF37" />
-      <CustomMesh meshData={meshData} />
-      <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
-      <gridHelper args={[10, 10, '#222222', '#333333']} rotation={[Math.PI / 2, 0, 0]} />
-      <axesHelper args={[5]} />
-    </Canvas>
-  );
+  // Error boundary for the Canvas component
+  try {
+    return (
+      <Canvas 
+        camera={{ position: [5, 5, 5], fov: 60 }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(new THREE.Color('#2E073F'));
+        }}
+        onError={() => setHasError(true)}
+      >
+        <color attach="background" args={['#2E073F']} />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[10, 10, 5]} intensity={1} color="#AD49E1" />
+        <CustomMesh meshData={meshData} />
+        <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
+        <gridHelper args={[10, 10, '#444444', '#555555']} rotation={[Math.PI / 2, 0, 0]} />
+        <axesHelper args={[5]} />
+      </Canvas>
+    );
+  } catch (error) {
+    console.error("Error rendering Canvas:", error);
+    setHasError(true);
+    return (
+      <div className="flex items-center justify-center h-full bg-[#2E073F]">
+        <div className="text-[#EBD3F8]">Error rendering 3D graph</div>
+      </div>
+    );
+  }
 };
 
 interface CustomMeshProps {
