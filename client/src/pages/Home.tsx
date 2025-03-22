@@ -19,15 +19,15 @@ const Home = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6">
-              Premium <span className="text-gold inline-block">Calculation</span> Suite for Professionals
+              Advanced <span className="text-gold inline-block">Physics</span> Calculator Suite
             </h1>
             <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl">
-              Experience the most comprehensive and visually stunning calculator suite. From basic operations to complex financial modeling and 3D graphing – all in a premium royal interface.
+              Experience the most comprehensive and visually stunning calculator suite. From basic operations to complex scientific modeling and 3D graphing – all in a beautifully designed interface.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/waitlist">
+              <Link href="/calculators">
                 <a className="btn-gold px-8 py-3 rounded-md text-dark font-bold text-center transform transition hover:scale-105">
-                  Join Exclusive Waitlist
+                  Try Calculators
                 </a>
               </Link>
               <Link href="/demo">

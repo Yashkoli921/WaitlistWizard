@@ -12,7 +12,6 @@ const Header = () => {
   const navLinks = [
     { title: "Features", path: "/features" },
     { title: "Calculators", path: "/calculators" },
-    { title: "Pricing", path: "/pricing" },
     { title: "Demo", path: "/demo" },
   ];
 
@@ -23,8 +22,8 @@ const Header = () => {
           {/* Logo */}
           <Link href="/">
             <a className="flex items-center cursor-pointer">
-              <span className="font-playfair text-gold text-2xl font-bold">Calculus</span>
-              <span className="font-playfair text-white text-2xl font-light">Royal</span>
+              <span className="font-playfair text-gold text-2xl font-bold">Physics</span>
+              <span className="font-playfair text-white text-2xl font-light">Calculator</span>
             </a>
           </Link>
           
@@ -39,12 +38,8 @@ const Header = () => {
             ))}
           </nav>
           
-          {/* CTA Button */}
-          <Link href="/waitlist">
-            <a className="hidden md:block px-5 py-2 rounded-md btn-gold text-dark font-semibold">
-              Join Waitlist
-            </a>
-          </Link>
+          {/* Empty space instead of CTA button */}
+          <div className="hidden md:block"></div>
           
           {/* Mobile Menu Button */}
           <button 
@@ -70,14 +65,7 @@ const Header = () => {
                   </a>
                 </Link>
               ))}
-              <Link href="/waitlist">
-                <a 
-                  className="btn-gold px-5 py-2 rounded-md text-dark font-semibold inline-block text-center"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Join Waitlist
-                </a>
-              </Link>
+
             </nav>
           </div>
         )}

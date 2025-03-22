@@ -7,8 +7,6 @@ import Home from "@/pages/Home";
 import Features from "@/pages/Features";
 import Calculators from "@/pages/Calculators";
 import Demo from "@/pages/Demo";
-import Pricing from "@/pages/Pricing";
-import Waitlist from "@/pages/Waitlist";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
@@ -22,8 +20,6 @@ function Router() {
           <Route path="/features" component={Features} />
           <Route path="/calculators" component={Calculators} />
           <Route path="/demo" component={Demo} />
-          <Route path="/pricing" component={Pricing} />
-          <Route path="/waitlist" component={Waitlist} />
           <Route component={NotFound} />
         </Switch>
       </main>
