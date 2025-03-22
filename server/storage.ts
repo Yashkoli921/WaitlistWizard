@@ -44,10 +44,16 @@ export class MemStorage implements IStorage {
   async saveCalculationHistory(calculation: InsertCalculationHistory): Promise<CalculationHistory> {
     const id = this.historyId++;
     const createdAt = new Date();
+    // Ensure userId is null if undefined
+    const userId = calculation.userId === undefined ? null : calculation.userId;
+    
     const history: CalculationHistory = { 
-      ...calculation, 
-      id, 
-      createdAt 
+      id,
+      userId,
+      calculationType: calculation.calculationType,
+      input: calculation.input,
+      result: calculation.result,
+      createdAt
     };
     this.calculationHistory.set(id, history);
     return history;

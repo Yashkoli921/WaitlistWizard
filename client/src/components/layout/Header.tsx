@@ -21,19 +21,19 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/">
-            <a className="flex items-center cursor-pointer">
+            <div className="flex items-center cursor-pointer">
               <span className="font-playfair text-gold text-2xl font-bold">Physics</span>
               <span className="font-playfair text-white text-2xl font-light">Calculator</span>
-            </a>
+            </div>
           </Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <Link key={link.path} href={link.path}>
-                <a className={`nav-link-hover text-gray-300 hover:text-gold-light ${location === link.path ? 'text-gold' : ''}`}>
+                <div className={`nav-link-hover text-gray-300 hover:text-gold-light cursor-pointer ${location === link.path ? 'text-gold' : ''}`}>
                   {link.title}
-                </a>
+                </div>
               </Link>
             ))}
           </nav>
@@ -57,15 +57,14 @@ const Header = () => {
             <nav className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <Link key={link.path} href={link.path}>
-                  <a 
-                    className={`text-gray-300 hover:text-gold-light px-2 py-1 ${location === link.path ? 'text-gold' : ''}`}
+                  <div 
+                    className={`text-gray-300 hover:text-gold-light px-2 py-1 cursor-pointer ${location === link.path ? 'text-gold' : ''}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.title}
-                  </a>
+                  </div>
                 </Link>
               ))}
-
             </nav>
           </div>
         )}
