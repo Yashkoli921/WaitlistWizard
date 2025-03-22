@@ -10,17 +10,17 @@ interface FeatureProps {
 const FeatureCard = ({ icon, title, description, delay }: FeatureProps) => {
   return (
     <motion.div 
-      className="bg-gradient-to-br from-[#2E073F] to-[#4A0C65] p-6 rounded-xl shadow-lg"
+      className="bg-gradient-to-br from-[#1E201E] to-[#3C3D37] p-6 rounded-xl shadow-lg"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: delay }}
       viewport={{ once: true }}
     >
-      <div className="w-12 h-12 rounded-full bg-[#AD49E1] flex items-center justify-center mb-6 text-[#EBD3F8]">
+      <div className="w-12 h-12 rounded-full bg-[#697565] flex items-center justify-center mb-6 text-[#ECDFCC]">
         <i className={`${icon} text-xl`}></i>
       </div>
-      <h3 className="font-playfair text-xl font-semibold mb-3 text-[#EBD3F8]">{title}</h3>
-      <p className="text-[#EBD3F8] opacity-80">{description}</p>
+      <h3 className="font-playfair text-xl font-semibold mb-3 text-[#ECDFCC]">{title}</h3>
+      <p className="text-[#ECDFCC] opacity-80">{description}</p>
     </motion.div>
   );
 };
@@ -66,7 +66,7 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-16 md:py-24 bg-gradient-to-b from-[#2E073F] to-[#4A0C65]">
+    <section id="features" className="py-16 md:py-24 bg-gradient-to-b from-[#1E201E] to-[#3C3D37]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           className="text-center mb-16"
@@ -75,8 +75,8 @@ const Features = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-[#EBD3F8]">Premium <span className="text-[#AD49E1]">Features</span></h2>
-          <p className="text-[#EBD3F8] opacity-80 max-w-2xl mx-auto">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-4 text-[#ECDFCC]">Premium <span className="text-[#697565]">Features</span></h2>
+          <p className="text-[#ECDFCC] opacity-80 max-w-2xl mx-auto">
             Designed with professionals in mind, our calculator suite offers unparalleled functionality with a premium aesthetic.
           </p>
         </motion.div>
