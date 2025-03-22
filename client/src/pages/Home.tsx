@@ -25,15 +25,11 @@ const Home = () => {
               Experience the most comprehensive and visually stunning calculator suite. From basic operations to complex scientific modeling and 3D graphing – all in a beautifully designed interface.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/calculators">
-                <a className="btn-gold px-8 py-3 rounded-md text-dark font-bold text-center transform transition hover:scale-105">
-                  Try Calculators
-                </a>
+              <Link href="/calculators" className="btn-gold px-8 py-3 rounded-md text-dark font-bold text-center transform transition hover:scale-105">
+                Try Calculators
               </Link>
-              <Link href="/demo">
-                <a className="border border-gold text-gold hover:bg-gold hover:text-dark px-8 py-3 rounded-md font-bold text-center transition">
-                  View Demo
-                </a>
+              <Link href="/demo" className="border border-gold text-gold hover:bg-gold hover:text-dark px-8 py-3 rounded-md font-bold text-center transition">
+                View Demo
               </Link>
             </div>
           </motion.div>

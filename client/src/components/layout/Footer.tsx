@@ -37,11 +37,9 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <Link href="/">
-              <a className="flex items-center mb-6">
-                <span className="font-playfair text-gold text-2xl font-bold">Calculus</span>
-                <span className="font-playfair text-white text-2xl font-light">Royal</span>
-              </a>
+            <Link href="/" className="flex items-center mb-6">
+                <span className="font-playfair text-gold text-2xl font-bold">Physics</span>
+                <span className="font-playfair text-white text-2xl font-light">Calculator</span>
             </Link>
             <p className="text-gray-400 mb-6">
               Premium calculation suite designed for professionals who demand elegance and power.
@@ -67,8 +65,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.features.map((link, index) => (
                 <li key={index}>
-                  <Link href={link.path}>
-                    <a className="text-gray-400 hover:text-gold transition">{link.name}</a>
+                  <Link href={link.path} className="text-gray-400 hover:text-gold transition">
+                    {link.name}
                   </Link>
                 </li>
               ))}
@@ -80,8 +78,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
-                  <Link href={link.path}>
-                    <a className="text-gray-400 hover:text-gold transition">{link.name}</a>
+                  <Link href={link.path} className="text-gray-400 hover:text-gold transition">
+                    {link.name}
                   </Link>
                 </li>
               ))}
@@ -93,8 +91,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <Link href={link.path}>
-                    <a className="text-gray-400 hover:text-gold transition">{link.name}</a>
+                  <Link href={link.path} className="text-gray-400 hover:text-gold transition">
+                    {link.name}
                   </Link>
                 </li>
               ))}
@@ -105,12 +103,12 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-500 mb-4 md:mb-0">
-              &copy; {currentYear} CalculusRoyal. All rights reserved.
+              &copy; {currentYear} Physics Calculator. All rights reserved.
             </div>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
               {footerLinks.legal.map((link, index) => (
-                <Link key={index} href={link.path}>
-                  <a className="text-gray-500 hover:text-gold transition">{link.name}</a>
+                <Link key={index} href={link.path} className="text-gray-500 hover:text-gold transition">
+                  {link.name}
                 </Link>
               ))}
             </div>
