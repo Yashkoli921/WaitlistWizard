@@ -9,7 +9,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-[#1E201E] opacity-90"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#3C3D37] via-[#697565] to-[#1E201E] opacity-70"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center">
           <motion.div 
@@ -28,12 +28,12 @@ const Home = () => {
               <Link href="/calculators" className="bg-[#697565] hover:bg-[#3C3D37] text-[#ECDFCC] px-8 py-3 rounded-md font-bold text-center transform transition hover:scale-105">
                 Try Calculators
               </Link>
-              <Link href="/demo" className="border border-[#697565] text-[#697565] hover:bg-[#697565] hover:text-[#ECDFCC] px-8 py-3 rounded-md font-bold text-center transition">
-                View Demo
+              <Link href="/auth" className="border border-[#697565] text-[#697565] hover:bg-[#697565] hover:text-[#ECDFCC] px-8 py-3 rounded-md font-bold text-center transition">
+                Login
               </Link>
             </div>
           </motion.div>
-          
+
           <motion.div 
             className="lg:w-1/2"
             initial={{ opacity: 0, rotateY: 30 }}
