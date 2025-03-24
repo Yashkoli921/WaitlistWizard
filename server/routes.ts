@@ -1,9 +1,13 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertCalculationHistorySchema } from "@shared/schema";
+import { insertCalculationHistorySchema, insertUserSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Create HTTP server
@@ -60,6 +64,49 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.status(500).json({
         message: "Error retrieving calculation history"
       });
+    }
+  });
+
+  // Auth routes
+  app.post('/api/auth/signup', async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = await storage.createUser({ 
+        username: email,
+        password: hashedPassword 
+      });
+      
+      const token = jwt.sign({ userId: user.id }, JWT_SECRET);
+      
+      res.status(201).json({ token });
+    } catch (error) {
+      console.error('Signup error:', error);
+      res.status(500).json({ message: 'Error creating user' });
+    }
+  });
+
+  app.post('/api/auth/login', async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      
+      const user = await storage.getUserByEmail(email);
+      if (!user) {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+      
+      const validPassword = await bcrypt.compare(password, user.password);
+      if (!validPassword) {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+      
+      const token = jwt.sign({ userId: user.id }, JWT_SECRET);
+      
+      res.json({ token });
+    } catch (error) {
+      console.error('Login error:', error);
+      res.status(500).json({ message: 'Error logging in' });
     }
   });
 

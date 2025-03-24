@@ -9,6 +9,7 @@ import Calculators from "@/pages/Calculators";
 import Demo from "@/pages/Demo";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Auth from "@/pages/Auth"; // Added Auth component import
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
           <Route path="/features" component={Features} />
           <Route path="/calculators" component={Calculators} />
           <Route path="/demo" component={Demo} />
+          <Route path="/auth" component={Auth} /> {/* Added Auth route */}
           <Route component={NotFound} />
         </Switch>
       </main>
