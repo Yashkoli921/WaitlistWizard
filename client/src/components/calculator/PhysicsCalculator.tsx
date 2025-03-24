@@ -1,6 +1,6 @@
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface FormulaType {
   name: string;
@@ -10,6 +10,7 @@ interface FormulaType {
 }
 
 const physicsFormulas: FormulaType[] = [
+  // Mechanics
   {
     name: "Velocity",
     formula: "v = d/t",
@@ -17,10 +18,22 @@ const physicsFormulas: FormulaType[] = [
     calculate: (inputs) => inputs.d / inputs.t
   },
   {
+    name: "Acceleration",
+    formula: "a = (v-u)/t",
+    variables: { v: "final velocity (m/s)", u: "initial velocity (m/s)", t: "time (s)" },
+    calculate: (inputs) => (inputs.v - inputs.u) / inputs.t
+  },
+  {
     name: "Force",
     formula: "F = ma",
     variables: { m: "mass (kg)", a: "acceleration (m/s²)" },
     calculate: (inputs) => inputs.m * inputs.a
+  },
+  {
+    name: "Work",
+    formula: "W = Fd",
+    variables: { F: "force (N)", d: "distance (m)" },
+    calculate: (inputs) => inputs.F * inputs.d
   },
   {
     name: "Kinetic Energy",
@@ -39,8 +52,98 @@ const physicsFormulas: FormulaType[] = [
     formula: "P = W/t",
     variables: { W: "work (J)", t: "time (s)" },
     calculate: (inputs) => inputs.W / inputs.t
+  },
+  // Thermodynamics
+  {
+    name: "Heat Energy",
+    formula: "Q = mcΔT",
+    variables: { m: "mass (kg)", c: "specific heat (J/kg·K)", T: "temperature change (K)" },
+    calculate: (inputs) => inputs.m * inputs.c * inputs.T
+  },
+  // Waves
+  {
+    name: "Wave Speed",
+    formula: "v = fλ",
+    variables: { f: "frequency (Hz)", λ: "wavelength (m)" },
+    calculate: (inputs) => inputs.f * inputs.λ
+  },
+  // Electricity
+  {
+    name: "Ohm's Law",
+    formula: "V = IR",
+    variables: { I: "current (A)", R: "resistance (Ω)" },
+    calculate: (inputs) => inputs.I * inputs.R
+  },
+  {
+    name: "Electrical Power",
+    formula: "P = VI",
+    variables: { V: "voltage (V)", I: "current (A)" },
+    calculate: (inputs) => inputs.V * inputs.I
+  },
+  // Circular Motion
+  {
+    name: "Centripetal Force",
+    formula: "F = mv²/r",
+    variables: { m: "mass (kg)", v: "velocity (m/s)", r: "radius (m)" },
+    calculate: (inputs) => inputs.m * Math.pow(inputs.v, 2) / inputs.r
+  },
+  // Pressure
+  {
+    name: "Pressure",
+    formula: "P = F/A",
+    variables: { F: "force (N)", A: "area (m²)" },
+    calculate: (inputs) => inputs.F / inputs.A
+  },
+  // Momentum
+  {
+    name: "Momentum",
+    formula: "p = mv",
+    variables: { m: "mass (kg)", v: "velocity (m/s)" },
+    calculate: (inputs) => inputs.m * inputs.v
+  },
+  // Springs
+  {
+    name: "Spring Force",
+    formula: "F = kx",
+    variables: { k: "spring constant (N/m)", x: "displacement (m)" },
+    calculate: (inputs) => inputs.k * inputs.x
+  },
+  // Fluid Mechanics
+  {
+    name: "Density",
+    formula: "ρ = m/V",
+    variables: { m: "mass (kg)", V: "volume (m³)" },
+    calculate: (inputs) => inputs.m / inputs.V
+  },
+  // Optics
+  {
+    name: "Lens Power",
+    formula: "P = 1/f",
+    variables: { f: "focal length (m)" },
+    calculate: (inputs) => 1 / inputs.f
+  },
+  // Nuclear Physics
+  {
+    name: "Mass-Energy",
+    formula: "E = mc²",
+    variables: { m: "mass (kg)" },
+    calculate: (inputs) => inputs.m * Math.pow(299792458, 2)
+  },
+  // Gravitational Force
+  {
+    name: "Gravity Force",
+    formula: "F = GM₁M₂/r²",
+    variables: { M1: "mass 1 (kg)", M2: "mass 2 (kg)", r: "distance (m)" },
+    calculate: (inputs) => (6.67430e-11 * inputs.M1 * inputs.M2) / Math.pow(inputs.r, 2)
+  },
+  // Sound
+  {
+    name: "Sound Intensity",
+    formula: "I = P/A",
+    variables: { P: "power (W)", A: "area (m²)" },
+    calculate: (inputs) => inputs.P / inputs.A
   }
-] as const;
+];
 
 const PhysicsCalculator = () => {
   const [selectedFormula, setSelectedFormula] = useState<FormulaType | null>(null);
