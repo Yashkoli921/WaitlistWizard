@@ -12,7 +12,7 @@ const Header = () => {
   const navLinks = [
     { title: "Features", path: "/features" },
     { title: "Calculators", path: "/calculators" },
-    { title: "Demo", path: "/demo" },
+    { title: "History", path: "/history" },
     { title: "Login", path: "/auth" },
   ];
 

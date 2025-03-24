@@ -6,10 +6,10 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Features from "@/pages/Features";
 import Calculators from "@/pages/Calculators";
-import Demo from "@/pages/Demo";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Auth from "@/pages/Auth";
+import History from "@/pages/History";
 
 function Router() {
   return (
@@ -20,7 +20,7 @@ function Router() {
           <Route path="/" component={Home} />
           <Route path="/features" component={Features} />
           <Route path="/calculators" component={Calculators} />
-          <Route path="/demo" component={Demo} />
+          <Route path="/history" component={History} />
           <Route path="/auth" component={Auth} />
           <Route component={NotFound} />
         </Switch>
