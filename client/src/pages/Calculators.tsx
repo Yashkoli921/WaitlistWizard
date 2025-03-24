@@ -5,6 +5,7 @@ import BasicCalculator from "@/components/calculator/BasicCalculator";
 import FinancialCalculator from "@/components/calculator/FinancialCalculator";
 import ScientificCalculator from "@/components/calculator/ScientificCalculator";
 import GraphingCalculator from "@/components/calculator/GraphingCalculator";
+import PhysicsCalculator from "@/components/calculator/PhysicsCalculator";
 
 const Calculators = () => {
   const [activeTab, setActiveTab] = useState("basic");
@@ -13,7 +14,8 @@ const Calculators = () => {
     { id: "basic", name: "Basic" },
     { id: "financial", name: "Financial" },
     { id: "scientific", name: "Scientific" },
-    { id: "graphing", name: "Graphing" }
+    { id: "graphing", name: "Graphing" },
+    { id: "physics", name: "Physics" }
   ];
 
   const features = {
@@ -131,6 +133,7 @@ const Calculators = () => {
             {activeTab === "financial" && <FinancialCalculator />}
             {activeTab === "scientific" && <ScientificCalculator />}
             {activeTab === "graphing" && <GraphingCalculator />}
+            {activeTab === "physics" && <PhysicsCalculator />}
           </motion.div>
         </div>
       </div>
