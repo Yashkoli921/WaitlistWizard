@@ -8,14 +8,14 @@ import GraphingCalculator from "@/components/calculator/GraphingCalculator";
 import PhysicsCalculator from "@/components/calculator/PhysicsCalculator";
 
 const Calculators = () => {
-  const [activeTab, setActiveTab] = useState("basic");
+  const [activeTab, setActiveTab] = useState("physics");
 
   const tabs = [
+    { id: "physics", name: "Physics" },
     { id: "basic", name: "Basic" },
     { id: "financial", name: "Financial" },
     { id: "scientific", name: "Scientific" },
-    { id: "graphing", name: "Graphing" },
-    { id: "physics", name: "Physics" }
+    { id: "graphing", name: "Graphing" }
   ];
 
   const features = {
