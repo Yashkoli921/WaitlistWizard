@@ -38,10 +38,16 @@ const Calculators = () => {
       "Constants and conversions"
     ],
     graphing: [
-      "3D function visualization",
-      "Interactive manipulation",
-      "Export capabilities",
-      "Custom function input"
+      "Plot 2D and 3D functions",
+      "Interactive graph manipulation",
+      "Multiple function overlays",
+      "Zoom and pan controls"
+    ],
+    physics: [
+      "Common physics formulas",
+      "Real-time calculations",
+      "Unit conversions",
+      "Interactive formula selector"
     ]
   };
 
@@ -66,7 +72,7 @@ const Calculators = () => {
             Explore our different calculator types, each designed with precision, elegance, and powerful functionality.
           </p>
         </motion.div>
-        
+
         {/* Calculator Tabs */}
         <div className="mb-10 flex justify-center">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-3xl">
@@ -87,7 +93,7 @@ const Calculators = () => {
             </TabsList>
           </Tabs>
         </div>
-        
+
         {/* Calculator Display */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <motion.div 
@@ -102,7 +108,7 @@ const Calculators = () => {
             <p className="text-gray-300 mb-6">
               {tabDescriptions[activeTab as keyof typeof tabDescriptions]}
             </p>
-            
+
             <div className="space-y-4">
               {features[activeTab as keyof typeof features].map((feature, index) => (
                 <motion.div 
@@ -120,7 +126,7 @@ const Calculators = () => {
               ))}
             </div>
           </motion.div>
-          
+
           <motion.div 
             className="order-1 lg:order-2"
             initial={{ opacity: 0, scale: 0.9 }}
